@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wishlist Kamu 💌</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffe0ec, #fff5d7);
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Amplop */
+        .envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 35px auto 25px;
+            background: #f8a5c2;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px #0002;
+            transition: 1s;
+        }
+
+        /* Bagian penutup amplop */
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 105px solid #e879a5;
+            transform-origin: top;
+            transition: 0.8s;
+            z-index: 3;
+        }
+
+        /* Bentuk sisi depan amplop */
+        .front {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 105px solid #fbc1d7;
+            z-index: 2;
+        }
+
+        /* Kertas tulisan */
+        textarea {
+            position: absolute;
+            top: 45px;
+            left: 20px;
+            width: 260px;
+            height: 110px;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            resize: none;
+            outline: none;
+            font-size: 14px;
+            z-index: 1;
+            background: #fffafc;
+        }
+
+        textarea::placeholder {
+            color: #b87591;
+        }
+
+        button {
+            border: none;
+            background: #d63384;
+            color: white;
+            padding: 13px 35px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 5px 12px #0002;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+            background: #b9216b;
+        }
+
+        /* Animasi amplop terbang */
+        .fly {
+            animation: terbang 2s forwards;
+        }
+
+        @keyframes terbang {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-150px) rotate(15deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-700px) rotate(35deg);
+                opacity: 0;
+            }
+        }
+
+        .open .flap {
+            transform: rotateX(180deg);
+        }
+
+        /* Pesan setelah diklik */
+        #hasil {
+            display: none;
+            animation: muncul 1.5s ease;
+        }
+
+        #hasil h2 {
+            color: #d63384;
+        }
+
+        #harapan {
+            background: #ffffffaa;
+            padding: 15px;
+            border-radius: 15px;
+            color: #555;
+            font-style: italic;
+            overflow-wrap: break-word;
+        }
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hearts {
+            position: fixed;
+            pointer-events: none;
+            animation: jatuh 5s linear infinite;
+            font-size: 22px;
+        }
+
+        @keyframes jatuh {
+            from {
+                transform: translateY(-100px);
+            }
+
+            to {
+                transform: translateY(110vh);
+            }
+        }
+    </style>
+</head>
+
+<body>
+  <!-- INTRO HAPPY BIRTHDAY -->
+<div id="intro">
+
+    <h1>Happy Birthday 🎂</h1>
+
+    <p>May all your wishes come true ✨</p>
+
+    <div class="tree">
+        <div class="trunk"></div>
+
+        <div class="branches"></div>
+
+        <div class="flowers">
+            🌸 🌷 🌸 🌷 🌸
+            🌷 🌸 🌷 🌸 🌷
+        </div>
+    </div>
+
+    <div class="intro-heart">💗</div>
+
+</div>
+
+    <div class="container" id="halaman">
+
+        <div id="formulir">
+
+            <h1>💌 Wishlist Kamu</h1>
+
+            <p class="subtitle">
+                Tulis keinginanmu di sini, ya.<br>
+                Kita doa bareng supaya terkabul ✨
+            </p>
+
+            <div class="envelope" id="amplop">
+
+                <div class="flap"></div>
+
+                <textarea
+                    id="wishlist"
+                    placeholder="Tulis harapanmu di sini...">
+                </textarea>
+
+                <div class="front"></div>
+
+            </div>
+
+            <button onclick="kirimHarapan()">OKE 💗</button>
+
+        </div>
+
+        <div id="hasil">
+
+            <h2>✨ Aamiin ✨</h2>
+
+            <p>
+                Semoga harapanmu segera terkabul.
+                Jangan berhenti berdoa dan berusaha, ya! 💖
+            </p>
+
+            <p id="harapan"></p>
+
+            <p>
+                🤲 Kita aminkan bersama.
+            </p>
+
+        </div>
+
+    </div>
+
+    <script>
+        function kirimHarapan() {
+
+            const input = document.getElementById("wishlist");
+            const amplop = document.getElementById("amplop");
+            const formulir = document.getElementById("formulir");
+            const hasil = document.getElementById("hasil");
+            const harapan = document.getElementById("harapan");
+
+            const teks = input.value.trim();
+
+            if (teks === "") {
+                alert("Tulis harapanmu dulu, ya! 💌");
+                return;
+            }
+
+            // Menampilkan harapan yang ditulis
+            harapan.textContent = "“" + teks + "”";
+
+            // Membuka amplop
+            amplop.classList.add("open");
+
+            // Menjalankan animasi terbang
+            setTimeout(function() {
+                amplop.classList.add("fly");
+            }, 800);
+
+            // Menampilkan hasil setelah animasi
+            setTimeout(function() {
+                formulir.style.display = "none";
+                hasil.style.display = "block";
+            }, 2500);
+
+            // Membuat hati beterbangan
+            for (let i = 0; i < 15; i++) {
+
+                const hati = document.createElement("div");
+
+                hati.className = "hearts";
+                hati.textContent = "💗";
+
+                hati.style.left = Math.random() * 100 + "vw";
+                hati.style.animationDelay = Math.random() * 2 + "s";
+
+                document.body.appendChild(hati);
+
+            }
+        }
+    </script>
+
+</body>
+</html>
