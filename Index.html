@@ -201,7 +201,7 @@
     border-top: 105px solid #e879a5;
     transform-origin: top;
     transition: 0.8s;
-    z-index: 3;
+    z-index: 6;
     pointer-events: none;
 }
 
@@ -329,6 +329,25 @@ textarea {
                 transform: translateY(110vh);
             }
         }
+        .made-by {
+    margin-top: 30px;
+    font-size: 13px;
+    color: #b87591;
+    font-style: italic;
+    opacity: 0.8;
+    position: relative;
+    animation: jalan 4s linear infinite;
+}
+
+@keyframes jalan {
+    0% {
+        transform: translateX(-100px);
+    }
+
+    100% {
+        transform: translateX(100px);
+    }
+}
     </style>
 </head>
 
