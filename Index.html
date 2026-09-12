@@ -7,6 +7,143 @@
     <title>Wishlist Kamu 💌</title>
 
     <style>
+        /* INTRO */
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: linear-gradient(135deg, #ffb6c9, #fff0d8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: introKeluar 2s ease 9s forwards;
+}
+
+#intro h1 {
+    font-family: Georgia, serif;
+    font-size: 42px;
+    color: #d63384;
+    animation: judulMuncul 2s ease;
+}
+
+#intro p {
+    color: #9b526d;
+    animation: judulMuncul 3s ease;
+}
+
+/* Pohon */
+.tree {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin-top: 20px;
+}
+
+.trunk {
+    position: absolute;
+    bottom: 0;
+    left: 135px;
+    width: 14px;
+    height: 190px;
+    background: #70452d;
+    border-radius: 10px;
+    transform-origin: bottom;
+    animation: pohonTumbuh 3s ease forwards;
+}
+
+.branches {
+    position: absolute;
+    bottom: 120px;
+    left: 70px;
+    width: 140px;
+    height: 100px;
+    border-top: 8px solid #70452d;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: cabangMuncul 3s ease 2s forwards;
+}
+
+.flowers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 35px;
+    line-height: 55px;
+    opacity: 0;
+    animation: bungaMuncul 2s ease 4s forwards;
+}
+
+/* Hati muncul setelah bunga */
+.intro-heart {
+    position: absolute;
+    font-size: 75px;
+    opacity: 0;
+    animation: hatiMuncul 2s ease 6s forwards;
+}
+
+/* Animasi */
+@keyframes judulMuncul {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pohonTumbuh {
+    from {
+        transform: scaleY(0);
+    }
+
+    to {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes cabangMuncul {
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes bungaMuncul {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes hatiMuncul {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes introKeluar {
+    to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
         * {
             box-sizing: border-box;
         }
@@ -195,7 +332,6 @@
 </head>
 
 <body>
-  <!-- INTRO HAPPY BIRTHDAY -->
 <div id="intro">
 
     <h1>Happy Birthday 🎂</h1>
